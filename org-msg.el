@@ -344,6 +344,7 @@ file."
 			       `((:from . ,#'mails2str)
 				 (:subject . identity)
 				 (:to . ,#'mails2str)
+				 (:cc . ,#'mails2str)
 				 (:date . message-make-date))
 			       "")
 		    "</div>\n<hr>\n"))
