@@ -325,10 +325,12 @@ file."
 				(format "%S &lt;%s&gt;" (car m) (cdr m)))
 			      l ", "))
 		 (field2str (f)
-		   (format "%s: %s<br>\n"
-			   (capitalize (substring (symbol-name (car f)) 1))
-			   (funcall (cdr f)
-				    (mu4e-message-field msg (car f))))))
+		   (let ((value (funcall (cdr f)
+					 (mu4e-message-field msg (car f)))))
+		     (when value
+		       (format "%s: %s<br>\n"
+			       (capitalize (substring (symbol-name (car f)) 1))
+			       value)))))
 	(with-temp-buffer
 	  (save-excursion
 	    (insert html))
